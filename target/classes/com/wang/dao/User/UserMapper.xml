@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wang.dao.User.UserMapper">
+
+    <insert id="addUser" parameterType="User">
+        insert into employee.employee(id, name, age, sex, address)
+        value(#{id},#{name},#{age},#{sex},#{address});
+    </insert>
+
+    <delete id="deleteUser" parameterType="int">
+        delete from employee.employee where id=#{id}
+    </delete>
+
+    <update id="updateUser" parameterType="User">
+        update employee.employee
+        set name=#{name},age=#{age},sex=#{sex},address=#{address}
+        where id=#{id} ;
+    </update>
+
+    <select id="queryUserById" resultType="com.wang.pojo.User.User">
+        select * from employee.employee where id=#{id}
+    </select>
+
+    <select id="queryAllUser" resultType="com.wang.pojo.User.User">
+        select * from employee.employee
+    </select>
+
+</mapper>
